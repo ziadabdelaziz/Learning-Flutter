@@ -43,8 +43,8 @@
 
 ### 9- Positional and Named Arguments
 * **positional arguments**: the arguments(inputs to function/class) are passed in order.
-&nbsp; -> if you identify function with positional parameters you must provide them when calling the function.
-&nbsp; -> if you want the function to have optional parameters, put them in square brackets, ex: **void add(a, [b]){}** and you can give them default values like this **void add(a, [b = 5]){}**.
+<br> -> if you identify function with positional parameters you must provide them when calling the function.
+<br> -> if you want the function to have optional parameters, put them in square brackets, ex: **void add(a, [b]){}** and you can give them default values like this **void add(a, [b = 5]){}**.
 * **named arguments**: you identify the parameters by their names ex: **void add({required a, required b}){}**
 
 ### 10- Combining widgets
@@ -68,7 +68,7 @@
 
 ### 15- Configuration Objects
 * **Container** flutter widget that is useful in configuring objects.
-&nbsp; -> it doesn't support being a const, need it's upper widget to be const.
-&nbsp; -> you can use **decoration** which need **Decoration** type value *Note: Decoration is an abstract class can't be passed to the function* 
-&nbsp; -> **BoxDecoration** is of type Decoration and can be given an argument called **gradient** which need a value of type **Gradient**.
-&nbsp; -> **LinearGradient** is of type gradient and have **colors** agrument which accepts a value of type **List<Color>** ex: **colors: [Colors.red, Colors.blue]** *Note: this angle brackets are syntax create <u>*generic*</u> type which work with other types*  
+<br> -> it doesn't support being a const, need it's upper widget to be const.
+<br> -> you can use **decoration** which need **Decoration** type value *Note: Decoration is an abstract class can't be passed to the function* 
+<br> -> **BoxDecoration** is of type Decoration and can be given an argument called **gradient** which need a value of type **Gradient**.
+<br> -> **LinearGradient** is of type gradient and have **colors** agrument which accepts a value of type **List<Color>** ex: **colors: [Colors.red, Colors.blue]** *Note: this angle brackets are syntax create <u>*generic*</u> type which work with other types*  
