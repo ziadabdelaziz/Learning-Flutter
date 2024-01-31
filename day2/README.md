@@ -34,7 +34,7 @@ void main(){
 begin: Alignment.topLeft,
 end: Alignment.bottomRight,
 ```
-* you can know about the values that can be passed to the arguments by looking at documentation or clicking `ctrl+space` to see the list of suggestions.
+* you can know about the values that can be passed to the arguments by checking the documentation of the Widget at **flutter.div** or pressing `ctrl+space` to see the list of suggestions.
 
 
 ### 2- Styling Text
@@ -89,7 +89,7 @@ class GradientContainer extends StatelessWidget {
 * extending this class alos comes with requirements.
 * `@override` keyword that makes it clear that you are overriding the method following it.
 * `StatelessWidget` class requirs `Widget build(context) {}` which is a build method that returns a widget.
-* build required `context` parameter passed which gives flutter importation imformation about the position of this widget in the widget tree.
+* build requires `context` parameter which gives flutter important information about the position of this widget in the widget tree.
 * `return` keyword returns the custom widget you want flutter to render on the screen.
 * now we can use this custom widget like so:
 ```
@@ -106,8 +106,8 @@ void main(){
 * you can see now how the code became more clean.
 
 ### 6- Constructor Function
-* you get a constructor function automaticall, so you don't need to specify one.
-* but if you need to make some configurations you would need to make your own.
+* you get a constructor function automatically, so you don't need to specify one.
+* but if you want to make some configurations you would need to make your own constructor.
 ```
 class GradientContainer extends StatelessWidget {
     const GradientContainer({key}): super(key:key){
@@ -119,11 +119,11 @@ class GradientContainer extends StatelessWidget {
 * it needs a named parameter `key` which is required by `StatelessWidget` class.
 * `key` parameter is forwarded to the constructor of the class from which we are inheriting (also called **super class**).
 * we use `super` keyword to access the constructor of the super class.
-* also you can acheive the same functionality in a more concise way: `GradientContainer({super.key})`.
+* also you can achieve the same functionality in a more concise way: `GradientContainer({super.key})`.
 
 ### 7- Splitting code across files
 * it's a good practice to but your custom classes in separate files.
 * there is a way in writing file names when working with flutter.
-* ex. `gradient_container.dart`.
+* ex. `gradient_container.dart`<br>
 &nbsp; -> notice all the letters are lower-case and words are separated with '_' (underscore).
 * after putting your widget in another file you need to import `package:flutter/material.dart` in this file and import this file in the file which is using the widget.
