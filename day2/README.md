@@ -1,7 +1,7 @@
 # Foundations Cont.
 31-1-2024
 
-Starting with the previos example:
+Starting with the previous example:
 
 ```
 void main(){
@@ -58,7 +58,7 @@ Text(
 * also there are more complex values and these values are called Objects (ex. BoxDecoration, LinearGradient and Container)
 * these objects are created based on blueprints **(Classes)**
 * **Objects** are data structures which contains<br> 
-&nbsp; -> Variables/Properties.
+&nbsp; -> Variables/Properties<br>
 &nbsp; -> Functions/Methods
 
 ### 5- Building Custom Widget
@@ -104,3 +104,26 @@ void main(){
 }
 ```
 * you can see now how the code became more clean.
+
+### 6- Constructor Function
+* you get a constructor function automaticall, so you don't need to specify one.
+* but if you need to make some configurations you would need to make your own.
+```
+class GradientContainer extends StatelessWidget {
+    const GradientContainer({key}): super(key:key){
+        //initialization work
+    }
+}
+```
+* the constructor function is a function with the same name as the class itself.
+* it needs a named parameter `key` which is required by `StatelessWidget` class.
+* `key` parameter is forwarded to the constructor of the class from which we are inheriting (also called **super class**).
+* we use `super` keyword to access the constructor of the super class.
+* also you can acheive the same functionality in a more concise way: `GradientContainer({super.key})`.
+
+### 7- Splitting code across files
+* it's a good practice to but your custom classes in separate files.
+* there is a way in writing file names when working with flutter.
+* ex. `gradient_container.dart`.
+&nbsp; -> notice all the letters are lower-case and words are separated with '_' (underscore).
+* after putting your widget in another file you need to import `package:flutter/material.dart` in this file and import this file in the file which is using the widget.
