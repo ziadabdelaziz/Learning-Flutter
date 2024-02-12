@@ -37,8 +37,8 @@ class _DiceRollerState extends State<DiceRoller> {
     }
 }
 ```
-&nbsp; -> `class DiceRoller extends StatefulWidget`: this is how you create a stateful widget instead of stateless widget, as we make our class inherit from `StatefulWidget` class
-&nbsp; -> `State<DiceRoller> createState()`: this line of code is overriding the `createState` function provided by `StatefulWidget` class and retuns `State` which is a generic type provided by Flutter, giving it the name of the class as it's type.
+&nbsp; -> `class DiceRoller extends StatefulWidget`: this is how you create a stateful widget instead of stateless widget, as we make our class inherit from `StatefulWidget` class<br>
+&nbsp; -> `State<DiceRoller> createState()`: this line of code is overriding the `createState` function provided by `StatefulWidget` class and retuns `State` which is a generic type provided by Flutter, giving it the name of the class as it's type.<br>
 &nbsp; -> `class _DiceRollerState extends StatefulWidget`: the `_` (underscore) in the beginning is used to make this class private (not accesable outside it's dart file), it's conventional to use **State** at the end of the class name.
 * using stateful widget isn't enough, we need to know about another piece of code, which is `setState((){})` which is provided by `State` class.
 * ex.

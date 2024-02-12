@@ -6,21 +6,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return  MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomLeft,
-            colors: [
-              Colors.deepPurple.shade700,
-              Colors.deepPurple,
-            ],
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomLeft,
+              colors: [
+                Color.fromARGB(255, 78, 13, 151),
+                Color.fromARGB(255, 107, 15, 168),
+              ],
+            ),
           ),
+          child: const StartScreen(),
         ),
-        child: const StartScreen(),
-      ),),
+      ),
     );
   }
 }

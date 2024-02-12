@@ -39,7 +39,7 @@ Column(
 	children: [
 		Text('first text at the top'),
 		Text('second text'),
-		Text('third text at the bottom',
+		Text('third text at the bottom'),
 	])
 ```
 * and to add a button you need to know about the tree types of buttons in flutter which are<br>
@@ -72,7 +72,7 @@ Column(
 	children: [
 		Text('first text at the top'),
 		Text('second text'),
-		Text('third text at the bottom',
+		Text('third text at the bottom'),
 	])
 ```
 * the above code gives the minimum size needed the display the widgets inside to the column height.
