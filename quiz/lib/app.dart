@@ -1,8 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/start_screen.dart';
+import 'package:quiz/screens/questions_screen.dart';
+import 'package:quiz/screens/start_screen.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Widget? activeScreen;
+
+  @override
+  void initState() {
+    super.initState();
+    activeScreen = StartScreen(switchScreen);
+  }
+
+  switchScreen() {
+    setState(() {
+      activeScreen = const QuestionsScreen();
+    });
+  }
 
   @override
   Widget build(context) {
@@ -14,12 +34,12 @@ class MyApp extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomLeft,
               colors: [
-                Color.fromARGB(255, 78, 13, 151),
-                Color.fromARGB(255, 107, 15, 168),
+                Color.fromARGB(255, 100, 13, 151),
+                Color.fromARGB(255, 120, 15, 168),
               ],
             ),
           ),
-          child: const StartScreen(),
+          child: activeScreen,
         ),
       ),
     );

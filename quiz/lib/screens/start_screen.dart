@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class StartScreen extends StatelessWidget {
-  const StartScreen({super.key});
+  StartScreen(this.startQuiz, {super.key});
 
+  void Function() startQuiz;
   @override
   Widget build(context) {
     return Center(
@@ -12,6 +14,7 @@ class StartScreen extends StatelessWidget {
           Image.asset(
             'assets/images/quiz-logo.png',
             width: 300,
+            color: const Color.fromARGB(180, 255, 255, 255),
           ),
           const SizedBox(height: 60),
           const Text(
@@ -22,7 +25,7 @@ class StartScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 30),
-          OutlinedButton(
+          OutlinedButton.icon(
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
               shape: const ContinuousRectangleBorder(
@@ -34,8 +37,9 @@ class StartScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            onPressed: () {},
-            child: const Text('Start Quiz'),
+            onPressed: startQuiz,
+            icon: const Icon(Icons.arrow_right_alt),
+            label: const Text('Start Quiz'),
           ),
         ],
       ),
