@@ -2,28 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:quiz/widgets/choice_button.dart';
 
 class QuestionsScreen extends StatelessWidget {
-  const QuestionsScreen({super.key});
+  QuestionsScreen({required this.text, required this.answers, super.key});
 
+  final String text;
+  final List<String> answers;
   @override
   Widget build(context) {
-    return const Center(
+    return Center(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'What are the main building blocks of Flutter UIs?',
-              style: TextStyle(
+              text,
+              style: const TextStyle(
                 color: Color.fromARGB(255, 206, 183, 247),
                 fontSize: 24,
               ),
             ),
-            SizedBox(height: 50),
-            ChoiceButton(choice: 'Functions'),
-            ChoiceButton(choice: 'Components'),
-            ChoiceButton(choice: 'Blocks'),
-            ChoiceButton(choice: 'Widgets'),
+            const SizedBox(height: 50),
+            ChoiceButton(choice: answers[0]),
+            ChoiceButton(choice: answers[1]),
+            ChoiceButton(choice: answers[2]),
+            ChoiceButton(choice: answers[3]),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/data/questions.dart';
 import 'package:quiz/screens/questions_screen.dart';
 import 'package:quiz/screens/start_screen.dart';
 
@@ -20,7 +21,10 @@ class _MyAppState extends State<MyApp> {
 
   switchScreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = QuestionsScreen(
+        text: questions[0].text,
+        answers: questions[0].answers,
+      );
     });
   }
 
