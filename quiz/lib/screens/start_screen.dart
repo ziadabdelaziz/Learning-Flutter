@@ -28,9 +28,9 @@ class StartScreen extends StatelessWidget {
           OutlinedButton.icon(
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
-              shape: const ContinuousRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
-                  Radius.circular(10),
+                  Radius.circular(8),
                 ),
               ),
               textStyle: const TextStyle(

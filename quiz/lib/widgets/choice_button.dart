@@ -13,9 +13,10 @@ class ChoiceButton extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 5),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           foregroundColor: Colors.white,
           backgroundColor: const Color.fromARGB(255, 57, 7, 114),
-          fixedSize: const Size(300, 30),
+          fixedSize: const Size(300, 40),
         ),
         onPressed: () {},
         child: Text(choice),
