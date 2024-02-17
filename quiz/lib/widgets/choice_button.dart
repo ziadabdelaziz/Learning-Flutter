@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 class ChoiceButton extends StatelessWidget {
   final String choice;
+  final void Function(String answer) answerQuestion;
+
   const ChoiceButton({
     super.key,
     required this.choice,
+    required this.answerQuestion,
   });
 
   @override
@@ -16,10 +19,11 @@ class ChoiceButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           foregroundColor: Colors.white,
           backgroundColor: const Color.fromARGB(255, 57, 7, 114),
-          fixedSize: const Size(300, 40),
         ),
-        onPressed: () {},
-        child: Text(choice),
+        onPressed: () {
+          answerQuestion(choice);
+        },
+        child: Text(choice, textAlign: TextAlign.center),
       ),
     );
   }
