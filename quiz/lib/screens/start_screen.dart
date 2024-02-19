@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/widgets/start_button.dart';
 
 // ignore: must_be_immutable
 class StartScreen extends StatelessWidget {
@@ -25,21 +26,10 @@ class StartScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 30),
-          OutlinedButton.icon(
-            style: OutlinedButton.styleFrom(
-              foregroundColor: Colors.white,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(8),
-                ),
-              ),
-              textStyle: const TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onPressed: startQuiz,
-            icon: const Icon(Icons.arrow_right_alt),
-            label: const Text('Start Quiz'),
+          StartButton(
+            label: 'Start Quiz',
+            icon: Icons.arrow_right_alt,
+            startQuiz: startQuiz,
           ),
         ],
       ),

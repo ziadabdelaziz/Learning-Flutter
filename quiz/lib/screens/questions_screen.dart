@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz/data/questions.dart';
 import 'package:quiz/widgets/choice_button.dart';
+import 'package:quiz/widgets/title_text.dart';
 
 class QuestionsScreen extends StatefulWidget {
   final void Function(String answer) onSelectedAnswer;
@@ -35,14 +35,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              currentQuestion.text,
-              style: GoogleFonts.lato(
-                color: const Color.fromARGB(180, 255, 255, 255),
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
+            TitleText(
+              text: currentQuestion.text,
             ),
             const SizedBox(height: 50),
             ...choicesButtons,
