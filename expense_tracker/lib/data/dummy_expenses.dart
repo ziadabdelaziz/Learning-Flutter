@@ -1,6 +1,6 @@
 import 'package:expense_tracker/models/expense.dart';
 
-List<Expense> expenses = [
+List<Expense> registeredExpenses = [
   Expense(
     title: 'Flutter Course',
     amount: 19.9,
