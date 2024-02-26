@@ -1,5 +1,5 @@
 # Interactivity, More Widgets & Theming Cont.
-22-2-2024
+24-2-2024
 
 ### 1- Injecting a Variable into String
 * string values are wraped with quotes `''` or douple quotes `""` like this `String text = 'this is a string value';`.
