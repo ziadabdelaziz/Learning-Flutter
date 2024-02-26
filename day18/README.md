@@ -29,7 +29,7 @@ void _presentDatePicker() async {
 * putting `!` after a nullable variable we tell dart that this will never be null.
 * when we have a nullable variable passed to a function which required a non-nullable variable but we are sure this value won't be null when this piece of code is executed.
 
-### 4- Drop Down Button
+### 4- Dropdown Button
 * you probably have seen an application where you choose from a drop down menu, to add this option in your Flutter app you can use `DropdownButton` widget.
 ```
 List<String> cities = ['Damietta', 'Cairo', 'Aswan'];
