@@ -1,3 +1,4 @@
+import 'package:expense_tracker/data/dummy_expenses.dart';
 import 'package:expense_tracker/models/expense.dart';
 import 'package:expense_tracker/widgets/expenses_list/expenses_item.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,13 @@ class ExpensesList extends StatelessWidget {
     return ListView.builder(
       itemCount: expenses.length,
       itemBuilder: (ctx, index) {
-        return ExpenseItem(expenses[index]);
+        return Dismissible(
+          key: ValueKey(expenses[index]),
+          onDismissed: (direction) {
+            registeredExpenses.removeAt(index);
+          },
+          child: ExpenseItem(expenses[index]),
+        );
       },
     );
   }
