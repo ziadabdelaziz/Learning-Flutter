@@ -1,5 +1,5 @@
 # Interactivity, More Widgets & Theming Cont.
-26-2-2024
+27-2-2024
 
 ### 1- Remove spaces from string
 * calling `trim()` method on a string object removes the spaces around the text.
