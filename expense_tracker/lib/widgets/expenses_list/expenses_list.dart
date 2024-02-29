@@ -6,22 +6,24 @@ import 'package:flutter/material.dart';
 class ExpensesList extends StatelessWidget {
   const ExpensesList({
     super.key,
-    required this.expenses,
+    required this.onRemoveExpense,
   });
 
-  final List<Expense> expenses;
+  final Function onRemoveExpense;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: expenses.length,
+      itemCount: registeredExpenses.length,
       itemBuilder: (ctx, index) {
+        final Expense expense = registeredExpenses[index];
+
         return Dismissible(
-          key: ValueKey(expenses[index]),
+          key: ValueKey(expense),
           onDismissed: (direction) {
-            registeredExpenses.removeAt(index);
+            onRemoveExpense(expense);
           },
-          child: ExpenseItem(expenses[index]),
+          child: ExpenseItem(expense),
         );
       },
     );

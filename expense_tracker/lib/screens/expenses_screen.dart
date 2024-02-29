@@ -25,13 +25,36 @@ class _ExpensesState extends State<Expenses> {
     });
   }
 
+  _removeExpense(Expense expense) {
+    final expenseIndex = registeredExpenses.indexOf(expense);
+
+    setState(() {
+      registeredExpenses.remove(expense);
+    });
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 3),
+        content: const Text('Expense removed!'),
+        action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            setState(() {
+              registeredExpenses.insert(expenseIndex, expense);
+            });
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget mainContent =
-        const Center(child: Text('No expenses found. Start adding some!'));
+        const Center(child: Text('No expenses! Start adding some.'));
 
     if (registeredExpenses.isNotEmpty) {
-      mainContent = ExpensesList(expenses: registeredExpenses);
+      mainContent = ExpensesList(onRemoveExpense: _removeExpense);
     }
 
     return Scaffold(
