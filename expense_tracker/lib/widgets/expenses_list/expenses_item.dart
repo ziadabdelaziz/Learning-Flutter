@@ -12,8 +12,12 @@ class ExpenseItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(expense.title),
+            Text(
+              expense.title,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             Row(
               children: [
                 Text('\$${expense.amount.toStringAsFixed(2)}'),
@@ -31,9 +35,5 @@ class ExpenseItem extends StatelessWidget {
         ),
       ),
     );
-    // ListTile(
-    //   title: Text(expense.title),
-    //   onTap: () {},
-    // )
   }
 }

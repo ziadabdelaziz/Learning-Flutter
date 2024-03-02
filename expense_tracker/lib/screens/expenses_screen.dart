@@ -68,14 +68,11 @@ class _ExpensesState extends State<Expenses> {
         ],
       ),
       body: SafeArea(
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 8),
-          child: Column(
-            children: [
-              const Text('The Chart'),
-              Expanded(child: mainContent),
-            ],
-          ),
+        child: Column(
+          children: [
+            const Text('The Chart'),
+            Expanded(child: mainContent),
+          ],
         ),
       ),
     );
