@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/screens/meal_details_screen.dart';
 import 'package:meals/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
   const MealsScreen({
     super.key,
-    required this.title,
+    this.title,
     required this.meals,
+    required this.onToggleFavoriteStatus,
   });
 
-  final String title;
+  final String? title;
   final List<Meal> meals;
+  final Function(Meal meal) onToggleFavoriteStatus;
+
+  void selectMeal(BuildContext context, Meal meal) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => MealDetailsScreen(
+          onToggleFavorite: onToggleFavoriteStatus,
+          meal: meal,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +51,20 @@ class MealsScreen extends StatelessWidget {
 
     if (meals.isNotEmpty) {
       content = ListView.builder(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          itemCount: meals.length,
-          itemBuilder: (ctx, index) => MealItem(meal: meals[index]));
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        itemCount: meals.length,
+        itemBuilder: (ctx, index) =>
+            MealItem(meal: meals[index], onSelectMeal: selectMeal),
+      );
     }
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: content,
-    );
+
+    return title != null
+        ? Scaffold(
+            appBar: AppBar(
+              title: Text(title!),
+            ),
+            body: content,
+          )
+        : content;
   }
 }
