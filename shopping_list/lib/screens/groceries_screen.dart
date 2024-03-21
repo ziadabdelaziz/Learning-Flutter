@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list/data/dummy_items.dart';
 import 'package:shopping_list/models/grocery_item.dart';
 // import 'package:shopping_list/provider/groceries.dart';
 import 'package:shopping_list/screens/new_item_screen.dart';
