@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list/provider/groceries.dart';
+import 'package:shopping_list/data/dummy_items.dart';
+import 'package:shopping_list/models/grocery_item.dart';
+// import 'package:shopping_list/provider/groceries.dart';
 import 'package:shopping_list/screens/new_item_screen.dart';
 
 class GroceriesScreen extends ConsumerStatefulWidget {
@@ -11,17 +13,46 @@ class GroceriesScreen extends ConsumerStatefulWidget {
 }
 
 class _ShoppingListScreenState extends ConsumerState<GroceriesScreen> {
-  void _addItem() {
-    Navigator.of(context).push(
+  final List<GroceryItem> _groceryItems = [];
+
+  void _addItem() async {
+    final newItem = await Navigator.of(context).push<GroceryItem>(
       MaterialPageRoute(
         builder: (ctx) => const NewItemScreen(),
       ),
     );
+
+    if (newItem == null) {
+      return;
+    }
+
+    setState(() {
+      _groceryItems.add(newItem);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final groceries = ref.read(groceriesProvider);
+    // final groceries = ref.read(groceriesProvider);
+
+    Widget listUI = Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: ListView.builder(
+        itemCount: _groceryItems.length,
+        itemBuilder: (context, index) => ListTile(
+          leading: Icon(
+            Icons.square,
+            color: _groceryItems[index].category.color,
+          ),
+          title: Text(_groceryItems[index].name),
+          trailing: Text(
+            '${_groceryItems[index].quantity}',
+            style: const TextStyle(fontSize: 16),
+          ),
+        ),
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Groceries'),
@@ -32,23 +63,11 @@ class _ShoppingListScreenState extends ConsumerState<GroceriesScreen> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: groceries.length,
-          itemBuilder: (context, index) => ListTile(
-            leading: Icon(
-              Icons.square,
-              color: groceries[index].category.color,
-            ),
-            title: Text(groceries[index].name),
-            trailing: Text(
-              '${groceries[index].quantity}',
-              style: const TextStyle(fontSize: 16),
-            ),
-          ),
-        ),
-      ),
+      body: _groceryItems.isEmpty
+          ? const Center(
+              child: Text('There is no groceries yet!'),
+            )
+          : listUI,
     );
   }
 }
