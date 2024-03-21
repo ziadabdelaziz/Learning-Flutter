@@ -30,6 +30,12 @@ class _ShoppingListScreenState extends ConsumerState<GroceriesScreen> {
     });
   }
 
+  void _removeItem(GroceryItem item) {
+    setState(() {
+      _groceryItems.remove(item);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // final groceries = ref.read(groceriesProvider);
@@ -38,15 +44,21 @@ class _ShoppingListScreenState extends ConsumerState<GroceriesScreen> {
       padding: const EdgeInsets.all(16.0),
       child: ListView.builder(
         itemCount: _groceryItems.length,
-        itemBuilder: (context, index) => ListTile(
-          leading: Icon(
-            Icons.square,
-            color: _groceryItems[index].category.color,
-          ),
-          title: Text(_groceryItems[index].name),
-          trailing: Text(
-            '${_groceryItems[index].quantity}',
-            style: const TextStyle(fontSize: 16),
+        itemBuilder: (context, index) => Dismissible(
+          key: ValueKey(_groceryItems[index].id),
+          onDismissed: (direction) {
+            _removeItem(_groceryItems[index]);
+          },
+          child: ListTile(
+            leading: Icon(
+              Icons.square,
+              color: _groceryItems[index].category.color,
+            ),
+            title: Text(_groceryItems[index].name),
+            trailing: Text(
+              '${_groceryItems[index].quantity}',
+              style: const TextStyle(fontSize: 16),
+            ),
           ),
         ),
       ),
