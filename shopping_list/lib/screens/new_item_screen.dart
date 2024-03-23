@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+
+import 'package:http/http.dart' as http;
+
 import 'package:shopping_list/data/categories.dart';
 import 'package:shopping_list/models/category.dart';
-import 'package:shopping_list/models/grocery_item.dart';
+// import 'package:shopping_list/models/grocery_item.dart';
 
 class NewItemScreen extends StatefulWidget {
   const NewItemScreen({super.key});
@@ -17,16 +22,27 @@ class _NewItemScreenState extends State<NewItemScreen> {
   var _enteredQuantity = 1;
   var _selectedCategory = categories[Categories.vegetables]!;
 
-  void _saveItem() {
+  void _saveItem() async {
     final formState = _formKey.currentState!;
+    final url = Uri.https(
+        'shopping-list-app-da3db-default-rtdb.europe-west1.firebasedatabase.app',
+        'shopping-list-app.json');
     if (formState.validate()) {
       formState.save();
-      Navigator.of(context).pop(GroceryItem(
-        id: DateTime.now().toString(),
-        name: _enteredName,
-        quantity: _enteredQuantity,
-        category: _selectedCategory,
-      ));
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'applicatoin/json',
+        },
+        body: json.encode({
+          'name': _enteredName,
+          'quantity': _enteredQuantity,
+          'category': _selectedCategory.title,
+        }),
+      );
+
+      response.body;
+      // Navigator.of(context).pop();
     }
   }
 
