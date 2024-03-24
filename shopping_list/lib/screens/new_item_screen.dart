@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:shopping_list/data/categories.dart';
 import 'package:shopping_list/models/category.dart';
+import 'package:shopping_list/models/grocery_item.dart';
 // import 'package:shopping_list/models/grocery_item.dart';
 
 class NewItemScreen extends StatefulWidget {
@@ -32,7 +33,7 @@ class _NewItemScreenState extends State<NewItemScreen> {
       final response = await http.post(
         url,
         headers: {
-          'Content-Type': 'applicatoin/json',
+          'Content-Type': 'application/json',
         },
         body: json.encode({
           'name': _enteredName,
@@ -41,8 +42,28 @@ class _NewItemScreenState extends State<NewItemScreen> {
         }),
       );
 
-      response.body;
-      // Navigator.of(context).pop();
+      print(response.statusCode);
+      print(response.body);
+
+      final Map<String, dynamic> resData = json.decode(response.body);
+
+      if (!context.mounted) {
+        return;
+      }
+
+      if (response.statusCode == 200) {
+        Navigator.of(context).pop(
+          GroceryItem(
+              id: resData['name'],
+              name: _enteredName,
+              quantity: _enteredQuantity,
+              category: _selectedCategory),
+        );
+      } else if (response.statusCode == 404) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('ERROR!!')),
+        );
+      }
     }
   }
 
@@ -140,7 +161,9 @@ class _NewItemScreenState extends State<NewItemScreen> {
                     child: const Text('Reset'),
                   ),
                   ElevatedButton(
-                    onPressed: _saveItem,
+                    onPressed: () {
+                      _saveItem();
+                    },
                     child: const Text('Add Item'),
                   ),
                 ],
