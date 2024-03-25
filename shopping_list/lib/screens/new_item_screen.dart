@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 import 'package:shopping_list/data/categories.dart';
 import 'package:shopping_list/models/category.dart';
 import 'package:shopping_list/models/grocery_item.dart';
-// import 'package:shopping_list/models/grocery_item.dart';
 
 class NewItemScreen extends StatefulWidget {
   const NewItemScreen({super.key});
@@ -22,14 +21,19 @@ class _NewItemScreenState extends State<NewItemScreen> {
   var _enteredName = '';
   var _enteredQuantity = 1;
   var _selectedCategory = categories[Categories.vegetables]!;
+  var _isSending = false;
 
   void _saveItem() async {
     final formState = _formKey.currentState!;
+
     final url = Uri.https(
         'shopping-list-app-da3db-default-rtdb.europe-west1.firebasedatabase.app',
         'shopping-list-app.json');
     if (formState.validate()) {
       formState.save();
+      setState(() {
+        _isSending = true;
+      });
       final response = await http.post(
         url,
         headers: {
@@ -61,7 +65,7 @@ class _NewItemScreenState extends State<NewItemScreen> {
         );
       } else if (response.statusCode == 404) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('ERROR!!')),
+          const SnackBar(content: Text('ERROR!! Failed to add new item')),
         );
       }
     }
@@ -161,10 +165,14 @@ class _NewItemScreenState extends State<NewItemScreen> {
                     child: const Text('Reset'),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      _saveItem();
-                    },
-                    child: const Text('Add Item'),
+                    onPressed: _isSending ? null : _saveItem,
+                    child: _isSending
+                        ? const SizedBox(
+                            height: 16,
+                            width: 16,
+                            child: CircularProgressIndicator(),
+                          )
+                        : const Text('Add Item'),
                   ),
                 ],
               )
