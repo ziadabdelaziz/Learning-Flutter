@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_list/data/categories.dart';
 import 'package:shopping_list/models/grocery_item.dart';
-// import 'package:shopping_list/provider/groceries.dart';
+import 'package:shopping_list/provider/groceries.dart';
 import 'package:shopping_list/screens/new_item_screen.dart';
 
 class GroceriesScreen extends ConsumerStatefulWidget {
@@ -17,11 +17,10 @@ class GroceriesScreen extends ConsumerStatefulWidget {
 
 class _ShoppingListScreenState extends ConsumerState<GroceriesScreen> {
   List<GroceryItem> _groceryItems = [];
-  var _isLoading = true;
 
   @override
   void initState() {
-    _loadItems();
+    ref.read(groceriesProvider.notifier).loadItems();
     super.initState();
   }
 
@@ -49,7 +48,6 @@ class _ShoppingListScreenState extends ConsumerState<GroceriesScreen> {
     }
     setState(() {
       _groceryItems = loadedItems;
-      _isLoading = false;
     });
   }
 
@@ -77,11 +75,11 @@ class _ShoppingListScreenState extends ConsumerState<GroceriesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final groceries = ref.read(groceriesProvider);
+    _groceryItems = ref.watch(groceriesProvider);
 
     Widget content = const Center(child: Text('There is no groceries yet!'));
 
-    if (_isLoading) {
+    if (ref.read(groceriesProvider.notifier).loading) {
       content = const Center(child: CircularProgressIndicator());
     }
 
