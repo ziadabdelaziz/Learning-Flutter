@@ -1,15 +1,10 @@
-import 'package:favorite_places/screens/new_place_screen.dart';
+import 'package:favorite_places/ui/add_place_screen/add_place_screen.dart';
+import 'package:favorite_places/ui/places_screen/places_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PlacesScreen extends ConsumerStatefulWidget {
+class PlacesScreen extends StatelessWidget {
   const PlacesScreen({super.key});
 
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _PlacesScreenState();
-}
-
-class _PlacesScreenState extends ConsumerState<PlacesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,12 +14,13 @@ class _PlacesScreenState extends ConsumerState<PlacesScreen> {
           IconButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (ctx) => const NewPlaceScreen()));
+                  MaterialPageRoute(builder: (ctx) => AddPlaceScreen()));
             },
             icon: const Icon(Icons.add),
           )
         ],
       ),
+      body: const PlacesList(),
     );
   }
 }
