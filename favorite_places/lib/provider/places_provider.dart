@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:favorite_places/models/place.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,6 +7,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class PlacesNotifier extends StateNotifier<List<Place>> {
   PlacesNotifier() : super([]);
   var loading = true;
+  File? image;
+  String? name;
+  var location;
 
   String? validatePlaceName(String? value) {
     if (value == null ||
@@ -16,17 +21,27 @@ class PlacesNotifier extends StateNotifier<List<Place>> {
     return null;
   }
 
-  void submitForm(GlobalKey<FormState> key) {
-    final formState = key.currentState!;
-
-    if (formState.validate()) {
-      key.currentState!.save();
-    }
+  bool validateImage() {
+    return !(image == null);
   }
 
-  void addPlace(String name) {
-    Place place = Place(name: name);
+  bool submitForm(GlobalKey<FormState> key) {
+    final formState = key.currentState!;
+
+    if (!formState.validate() || !validateImage()) {
+      return false;
+    }
+
+    key.currentState!.save();
+    _addPlace();
+
+    return true;
+  }
+
+  void _addPlace() {
+    Place place = Place(name: name!, imageFile: image!);
     state = [place, ...state];
+    print('added');
   }
 }
 

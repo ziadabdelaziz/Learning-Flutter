@@ -22,15 +22,24 @@ class PlacesList extends ConsumerWidget {
     return ListView.builder(
       itemCount: places.length,
       itemBuilder: (ctx, index) {
+        final place = places[index];
+
         return ListTile(
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+          leading: CircleAvatar(
+            radius: 26,
+            backgroundImage: FileImage(place.imageFile),
+          ),
           title: Text(
-            places[index].name,
+            place.name,
             style: Theme.of(context).textTheme.titleMedium,
           ),
+          trailing: const Icon(Icons.delete),
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => PlaceScreen(place: places[index]),
+                builder: (context) => PlaceScreen(place: place),
               ),
             );
           },

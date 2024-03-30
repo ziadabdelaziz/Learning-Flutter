@@ -1,14 +1,21 @@
 import 'package:favorite_places/provider/places_provider.dart';
 import 'package:favorite_places/ui/add_place_screen/image_input.dart';
+import 'package:favorite_places/ui/add_place_screen/location_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddPlaceScreen extends ConsumerWidget {
-  AddPlaceScreen({super.key});
+class AddPlaceScreen extends ConsumerStatefulWidget {
+  const AddPlaceScreen({super.key});
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _AddPlaceScreenState();
+}
+
+class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final formKey = GlobalKey<FormState>();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add new Place'),
@@ -29,18 +36,28 @@ class AddPlaceScreen extends ConsumerWidget {
                 validator: (value) =>
                     ref.watch(placesProvider.notifier).validatePlaceName(value),
                 onSaved: (value) {
-                  ref.watch(placesProvider.notifier).addPlace(value!);
-                  Navigator.of(context).pop();
+                  ref.watch(placesProvider.notifier).name = value;
                 },
               ),
-              const SizedBox(
-                height: 16,
-              ),
-              ImageInput(),
               const SizedBox(height: 16),
+              // image picker
+              const ImageInput(),
+              const SizedBox(height: 32),
+              // location
+              const LocationInput(),
+              const SizedBox(height: 16),
+              // submit button
               ElevatedButton.icon(
                 onPressed: () {
-                  ref.watch(placesProvider.notifier).submitForm(formKey);
+                  if (ref.watch(placesProvider.notifier).submitForm(formKey)) {
+                    Navigator.of(context).pop();
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('An Error Occured!'),
+                      ),
+                    );
+                  }
                 },
                 icon: const Icon(Icons.add),
                 label: const Text('Add Place'),
