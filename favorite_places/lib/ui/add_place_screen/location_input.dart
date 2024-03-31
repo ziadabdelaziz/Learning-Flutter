@@ -10,7 +10,7 @@ class LocationInput extends ConsumerStatefulWidget {
 }
 
 class _LocationInputState extends ConsumerState<LocationInput> {
-  Location? _pieckedLocation;
+  Location? _pickedLocation;
   var _isGettingLocation = false;
 
   void _getCurrentLocation() async {
