@@ -1,16 +1,24 @@
 # meals
 
-A new Flutter project.
+mobile app for a menue of meals
 
-## Getting Started
+## Categories Screen
+display the categories available in the menu
+![screen1](https://github.com/user-attachments/assets/bf69174e-4cef-4120-aaaf-57282cd6bde9)
 
-This project is a starting point for a Flutter application.
+## List of Meals Screen
+each category contains a list of meals
+![screen6](https://github.com/user-attachments/assets/820d10f7-7e87-4ae9-b4a8-673de38a7e51)
 
-A few resources to get you started if this is your first Flutter project:
+## Meal Details Screen
+![screen5](https://github.com/user-attachments/assets/5b54d5ba-e7d3-4870-9b6f-90c19c90256e)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Favorites Screen
+![screen9](https://github.com/user-attachments/assets/f5151694-b89b-49ba-b6a8-dfd2e8c1ba57)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Drawer
+![screen4](https://github.com/user-attachments/assets/1e7de379-7909-4e35-ab09-eebbcce1cdb3)
+
+## Settings Screen
+![screen8](https://github.com/user-attachments/assets/794eb629-417c-4e43-b441-098aca27152d)
+
