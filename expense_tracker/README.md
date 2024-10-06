@@ -1,16 +1,12 @@
 # expense_tracker
 
-A new Flutter project.
+Simple expense tracker app
 
-## Getting Started
+## Home
+![home screen](https://https://github.com/ziadabdelaziz/Learning-Flutter/tree/main/expense_tracker/images/home.jpg?raw=true)
 
-This project is a starting point for a Flutter application.
+## Home Landscape
+![home screen landscape](https://https://github.com/ziadabdelaziz/Learning-Flutter/tree/main/expense_tracker/images/home-landscape.jpg?raw=true)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Add Expense
+![add expense](https://https://github.com/ziadabdelaziz/Learning-Flutter/tree/main/expense_tracker/images/add.jpg?raw=true)

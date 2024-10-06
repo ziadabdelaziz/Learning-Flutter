@@ -16,6 +16,7 @@ class ExpenseTracker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       darkTheme: ThemeData.dark().copyWith(
         colorScheme: kDarkColorScheme,
         cardTheme: const CardTheme().copyWith(
