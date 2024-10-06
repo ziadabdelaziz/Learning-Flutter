@@ -3,11 +3,11 @@
 mobile app for a menue of meals
 
 ## Categories Screen
-display the categories available in the menu
+display the categories available in the menu<br/>
 ![screen1](https://github.com/user-attachments/assets/bf69174e-4cef-4120-aaaf-57282cd6bde9)
 
 ## List of Meals Screen
-each category contains a list of meals
+each category contains a list of meals<br/>
 ![screen6](https://github.com/user-attachments/assets/820d10f7-7e87-4ae9-b4a8-673de38a7e51)
 
 ## Meal Details Screen
